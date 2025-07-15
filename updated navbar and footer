@@ -7,9 +7,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen relative">
 
-  <nav class="bg-indigo-900 text-white px-6 py-4 flex justify-between items-center">
+  <nav class="bg-indigo-900 text-white px-6 py-4 flex justify-between items-center sticky top-0 left-0">
     <div class="text-xl font-bold tracking-wide">Leadleast</div>
     <div class="flex flex-wrap gap-3 sm:gap-5 md:gap-6 text-sm sm:text-base md:text-lg font-medium">
       <a href="#" class="relative px-3 py-1 rounded transition duration-300 hover:bg-white/10 hover:font-semibold">Dashboard</a>
