@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leads Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+  
+  <nav class="bg-indigo-900 text-white px-6 py-4 flex gap-6 text-lg font-medium">
+    <a href="#" class="font-semibold">Dashboard</a>
+    <a href="#">Leads</a>
+    <a href="#">Reports</a>
+  </nav>
+
+  <div class="p-6 space-y-6">
+    <h1 class="text-3xl font-bold">Leads Dashboard</h1>
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <div class="bg-white shadow rounded-lg p-4">
+        <h2 class="text-lg font-semibold mb-2">Lead Status</h2>
+        <canvas id="pieChart" class="w-full h-60"></canvas>
+      </div>
+
+      
+      <div class="bg-white shadow rounded-lg p-4">
+        <h2 class="text-lg font-semibold mb-2">Revenue</h2>
+        <canvas id="barChart" class="w-full h-60"></canvas>
+      </div>
+    </div>
+
+    
+    <div class="bg-white shadow rounded-lg overflow-x-auto">
+      <table class="min-w-full table-auto border border-gray-200">
+        <thead>
+          <tr class="bg-gray-100 text-left">
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t">
+            <td class="px-4 py-2">Acme Inc.</td>
+            <td class="px-4 py-2 text-indigo-700">Open</td>
+            <td class="px-4 py-2">$5000</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">Globex Corp</td>
+            <td class="px-4 py-2 text-green-600">Closed</td>
+            <td class="px-4 py-2">$12000</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">Soylent LLC</td>
+            <td class="px-4 py-2 text-yellow-600">Pending</td>
+            <td class="px-4 py-2">$7000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+  <script>
+    
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Open', 'Closed', 'Pending'],
+        datasets: [{
+          data: [3, 5, 2],
+          backgroundColor: ['#8884d8', '#82ca9d', '#ffc658'],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Acme Inc.', 'Globex Corp', 'Soylent LLC'],
+        datasets: [{
+          label: 'Revenue ($)',
+          data: [5000, 12000, 7000],
+          backgroundColor: '#8884d8'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
